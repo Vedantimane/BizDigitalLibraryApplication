@@ -15,23 +15,24 @@ public class BookService {
 
     private final List<Book> books = new ArrayList<>();
 
-    @PostConstruct
-    public void initDefaultBooks() {
-        if (bookRepository.count() == 0) {
-            List<Book> defaultBooks = List.of(
-                new Book(null, "The Hobbit", "J.R.R. Tolkien", "978-0547928227", true),
-                new Book(null, "1984", "George Orwell", "978-0451524935", true),
-                new Book(null, "To Kill a Mockingbird", "Harper Lee", "978-0061120084", true),
-                new Book(null, "The Great Gatsby", "F. Scott Fitzgerald", "978-0743273565", true),
-                new Book(null, "Pride and Prejudice", "Jane Austen", "978-1503290563", true)
-            );
-            bookRepository.saveAll(defaultBooks);
-            books.addAll(defaultBooks);
-        }
+  @PostConstruct
+public void initDefaultBooks() {
+    if (bookRepository.count() == 0) {
+        List<Book> defaultBooks = List.of(
+            new Book(null, "Artificial Intelligence: A Modern Approach", "Stuart Russell, Peter Norvig", "978-0136042594", true),
+            new Book(null, "Deep Learning", "Ian Goodfellow, Yoshua Bengio, Aaron Courville", "978-0262035613", true),
+            new Book(null, "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow", "Aurélien Géron", "978-1492032649", true),
+            new Book(null, "The Hundred-Page Machine Learning Book", "Andriy Burkov", "978-1999579500", true),
+            new Book(null, "Life 3.0: Being Human in the Age of Artificial Intelligence", "Max Tegmark", "978-1101970317", true)
+        );
+        bookRepository.saveAll(defaultBooks);
+        books.addAll(defaultBooks);
     }
+}
+
 
     public Book addBook(Book book) {
-        return bookRepository.save(book); // no validation here
+        return bookRepository.save(book); 
     }
     
 
